@@ -7,6 +7,13 @@ const Affiliate = () => {
 
   useEffect(() => {
     console.log("Affiliate page loaded with ID:", affiliateId);
+    
+    // Redirect to main site after 3 seconds
+    const timer = setTimeout(() => {
+      window.location.href = 'https://neuroquranic.com';
+    }, 3000);
+
+    return () => clearTimeout(timer);
   }, [affiliateId]);
 
   return (
@@ -21,12 +28,16 @@ const Affiliate = () => {
             You've been referred by affiliate: {affiliateId}
           </p>
           
+          <p className="text-lg text-foreground/60 mb-4">
+            Redirecting in 3 seconds...
+          </p>
+          
           <Button 
             variant="hero"
             className="text-xl py-6 px-12 shadow-glow hover:shadow-neural transform hover:scale-105 transition-all duration-300"
-            onClick={() => window.open('https://neuroquranic.app', '_blank')}
+            onClick={() => window.location.href = 'https://neuroquranic.com'}
           >
-            🧠 Download NeuroQuranic App
+            🧠 Go to NeuroQuranic Now
           </Button>
         </div>
       </div>
