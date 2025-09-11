@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useLanguage } from '@/hooks/useLanguage';
+import { useLanguage } from '@/contexts/LanguageContext';
 import { Button } from './ui/button';
 
 export const FAQ = () => {

@@ -1,4 +1,4 @@
-import { useLanguage } from '@/hooks/useLanguage';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 export const ForWhom = () => {
   const { t } = useLanguage();

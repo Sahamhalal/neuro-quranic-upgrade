@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Button } from './ui/button';
 import { LanguageSwitcher } from './ui/language-switcher';
-import { useLanguage } from '@/hooks/useLanguage';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 export const Header = () => {
   const { currentLang, changeLanguage, t } = useLanguage();

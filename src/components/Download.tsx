@@ -1,5 +1,5 @@
 import { Button } from './ui/button';
-import { useLanguage } from '@/hooks/useLanguage';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 export const Download = () => {
   const { t } = useLanguage();
