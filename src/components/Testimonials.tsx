@@ -5,18 +5,18 @@ export const Testimonials = () => {
 
   const testimonials = [
     {
-      quoteKey: "Anak saya umur 2 tahun — belum cakap, tapi boleh ikut irama Surah Ar-Rahman. Doktor kata neural development dia advanced. Saya percaya — ini sebab NeuroQuranic.",
-      authorKey: "Dr. Aina, Pakar Kanak-Kanak",
+      quoteKey: "testimonials.quote1",
+      authorKey: "testimonials.author1",
       emoji: "👶"
     },
     {
-      quoteKey: "Umur 68, dah lupa nama anak sendiri. Selepas 3 bulan guna NeuroQuranic — saya ingat balik doa waktu kecil. Otak saya rasa 'hidup' semula.",
-      authorKey: "Pak Din, Pesara Guru", 
+      quoteKey: "testimonials.quote2",
+      authorKey: "testimonials.author2", 
       emoji: "🧓"
     },
     {
-      quoteKey: "Sebagai CEO, otak saya overload. 10 minit sehari dengan Mindful Recitation Mode — macam 'factory reset'. Fokus saya naik 200%.",
-      authorKey: "Aiman, Founder Tech Startup",
+      quoteKey: "testimonials.quote3",
+      authorKey: "testimonials.author3",
       emoji: "👨‍💼"
     }
   ];
@@ -45,11 +45,11 @@ export const Testimonials = () => {
                 </div>
                 
                 <blockquote className="text-lg text-foreground/90 leading-relaxed mb-6 group-hover:text-foreground transition-colors">
-                  "{testimonial.quoteKey}"
+                  "{t(testimonial.quoteKey)}"
                 </blockquote>
                 
                 <footer className="text-accent-soft font-medium text-center">
-                  — {testimonial.authorKey}
+                  — {t(testimonial.authorKey)}
                 </footer>
               </div>
             </div>
