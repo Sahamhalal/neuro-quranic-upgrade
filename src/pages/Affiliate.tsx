@@ -8,9 +8,14 @@ const Affiliate = () => {
   useEffect(() => {
     console.log("Affiliate page loaded with ID:", affiliateId);
     
-    // Redirect to main site after 3 seconds
+    // Store affiliate ID in localStorage for tracking
+    if (affiliateId) {
+      localStorage.setItem('affiliateId', affiliateId);
+    }
+    
+    // Redirect to main site with affiliate parameter after 3 seconds
     const timer = setTimeout(() => {
-      window.location.href = 'https://neuroquranic.com';
+      window.location.href = `https://neuroquranic.com?ref=${affiliateId}`;
     }, 3000);
 
     return () => clearTimeout(timer);
@@ -35,7 +40,7 @@ const Affiliate = () => {
           <Button 
             variant="hero"
             className="text-xl py-6 px-12 shadow-glow hover:shadow-neural transform hover:scale-105 transition-all duration-300"
-            onClick={() => window.location.href = 'https://neuroquranic.com'}
+            onClick={() => window.location.href = `https://neuroquranic.com?ref=${affiliateId}`}
           >
             🧠 Go to NeuroQuranic Now
           </Button>
