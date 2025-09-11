@@ -8,8 +8,11 @@ import { Download } from '@/components/Download';
 import { FAQ } from '@/components/FAQ';
 import { Newsletter } from '@/components/Newsletter';
 import { Footer } from '@/components/Footer';
+import { useLanguage } from '@/hooks/useLanguage';
 
 const Index = () => {
+  // This ensures the Index component re-renders when language changes
+  useLanguage();
   return (
     <div className="min-h-screen bg-background text-foreground">
       <Header />
