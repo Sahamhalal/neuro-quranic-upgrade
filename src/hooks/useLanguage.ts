@@ -166,8 +166,11 @@ export const useLanguage = () => {
   }, []);
 
   const changeLanguage = (lang: Language) => {
+    console.log('Language change requested:', lang);
+    console.log('Current language before change:', currentLang);
     setCurrentLang(lang);
     localStorage.setItem('preferredLang', lang);
+    console.log('Language changed to:', lang);
   };
 
   const t = (key: string): string => {

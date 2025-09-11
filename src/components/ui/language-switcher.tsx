@@ -20,7 +20,10 @@ export const LanguageSwitcher = ({ currentLang, onLanguageChange }: LanguageSwit
           key={lang.code}
           variant={currentLang === lang.code ? "neural" : "ghost"}
           size="sm"
-          onClick={() => onLanguageChange(lang.code)}
+          onClick={() => {
+            console.log('Language button clicked:', lang.code);
+            onLanguageChange(lang.code);
+          }}
           className={cn(
             "rounded-full px-3 py-1.5 text-xs font-medium transition-all duration-300",
             currentLang === lang.code 
