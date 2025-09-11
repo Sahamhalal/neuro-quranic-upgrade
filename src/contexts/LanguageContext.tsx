@@ -186,13 +186,41 @@ interface LanguageProviderProps {
 }
 
 export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children }) => {
-  const [currentLang, setCurrentLang] = useState<Language>('bm');
+  const [currentLang, setCurrentLang] = useState<Language>('en'); // Default to English
 
   useEffect(() => {
-    const savedLang = localStorage.getItem('preferredLang') as Language;
-    if (savedLang && translations[savedLang]) {
-      setCurrentLang(savedLang);
-    }
+    const detectLanguageByLocation = async () => {
+      const savedLang = localStorage.getItem('preferredLang') as Language;
+      if (savedLang && translations[savedLang]) {
+        setCurrentLang(savedLang);
+        return;
+      }
+
+      try {
+        // Try to get country from IP geolocation
+        const response = await fetch('https://ipapi.co/json/');
+        const data = await response.json();
+        const country = data.country_code;
+
+        let detectedLang: Language = 'en'; // Default to English
+        
+        if (country === 'MY') {
+          detectedLang = 'bm'; // Malaysia -> Malay
+        } else if (country === 'ID') {
+          detectedLang = 'bi'; // Indonesia -> Bahasa Indonesia
+        } else {
+          detectedLang = 'en'; // Singapore and other countries -> English
+        }
+
+        setCurrentLang(detectedLang);
+        localStorage.setItem('preferredLang', detectedLang);
+      } catch (error) {
+        console.log('Geolocation detection failed, using English default');
+        setCurrentLang('en');
+      }
+    };
+
+    detectLanguageByLocation();
   }, []);
 
   const changeLanguage = (lang: Language) => {
