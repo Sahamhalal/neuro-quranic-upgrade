@@ -35,17 +35,17 @@ export const Header = () => {
     >
       <div className="container mx-auto px-4 py-4">
         <div className="flex items-center justify-between">
-          {/* Logo */}
-          <div className="text-2xl font-bold bg-gradient-neural bg-clip-text text-transparent animate-gradient-shift">
-            NeuroQuranic
-          </div>
-
-          {/* Language Switcher */}
+          {/* Language Switcher - First position */}
           <div className="hidden md:block">
             <LanguageSwitcher 
               currentLang={currentLang} 
               onLanguageChange={changeLanguage} 
             />
+          </div>
+
+          {/* Logo - Center */}
+          <div className="text-2xl font-bold bg-gradient-neural bg-clip-text text-transparent animate-gradient-shift">
+            NeuroQuranic
           </div>
 
           {/* Navigation */}
