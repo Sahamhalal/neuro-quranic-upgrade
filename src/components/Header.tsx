@@ -35,8 +35,8 @@ export const Header = () => {
     >
       <div className="container mx-auto px-4 py-4">
         <div className="flex items-center justify-between">
-          {/* Language Switcher - First position */}
-          <div className="hidden md:block">
+          {/* Language Switcher - Always visible at first position */}
+          <div>
             <LanguageSwitcher 
               currentLang={currentLang} 
               onLanguageChange={changeLanguage} 
@@ -125,14 +125,6 @@ export const Header = () => {
                 >
                   {t('nav.testimonials')}
                 </button>
-                
-                {/* Mobile Language Switcher */}
-                <div className="py-2">
-                  <LanguageSwitcher 
-                    currentLang={currentLang} 
-                    onLanguageChange={changeLanguage} 
-                  />
-                </div>
                 
                 {/* Mobile Download Button */}
                 <Button 
