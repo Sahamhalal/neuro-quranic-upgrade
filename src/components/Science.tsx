@@ -29,19 +29,19 @@ export const Science = () => {
             {points.map((point, index) => (
               <div 
                 key={index}
-                className="group flex items-start gap-6 bg-card/20 backdrop-blur-md border border-card-glow/20 rounded-2xl p-8 hover:bg-card/40 hover:border-card-glow/40 transition-all duration-500 hover:shadow-card"
+                className="group flex flex-col sm:flex-row items-start gap-4 sm:gap-6 bg-card/20 backdrop-blur-md border border-card-glow/20 rounded-2xl p-6 sm:p-8 hover:bg-card/40 hover:border-card-glow/40 transition-all duration-500 hover:shadow-card"
                 style={{ animationDelay: `${index * 0.2}s` }}
               >
-                <div className="text-4xl animate-float" style={{ animationDelay: `${index * 0.5}s` }}>
+                <div className="text-3xl sm:text-4xl animate-float self-center sm:self-start" style={{ animationDelay: `${index * 0.5}s` }}>
                   {index === 0 && "📡"}
                   {index === 1 && "🧬"}
                   {index === 2 && "⚡"}
                   {index === 3 && "🔄"}
                 </div>
                 
-                <div className="flex-1">
+                <div className="flex-1 text-center sm:text-left">
                   <p 
-                    className="text-lg text-foreground/90 leading-relaxed group-hover:text-foreground transition-colors"
+                    className="text-base sm:text-lg text-foreground/90 leading-relaxed group-hover:text-foreground transition-colors"
                     dangerouslySetInnerHTML={{ __html: t(point.key) }}
                   />
                 </div>
@@ -51,7 +51,7 @@ export const Science = () => {
 
           {/* Quote */}
           <div className="text-center">
-            <blockquote className="text-2xl md:text-3xl font-medium text-accent-soft leading-relaxed bg-card/30 backdrop-blur-md border border-card-glow/30 rounded-2xl p-8 shadow-card">
+            <blockquote className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-medium text-accent-soft leading-relaxed bg-card/30 backdrop-blur-md border border-card-glow/30 rounded-2xl p-6 sm:p-8 shadow-card">
               {t('science.quote')}
             </blockquote>
           </div>

@@ -37,25 +37,25 @@ export const Hero = () => {
 
       <div className="container mx-auto px-4 relative z-10">
         <div className="max-w-4xl mx-auto text-center">
-          <h1 className="text-hero font-bold mb-6 leading-tight">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
             <span className="bg-gradient-neural bg-clip-text text-transparent animate-gradient-shift">
               {t('hero.title')}
             </span>
           </h1>
           
-          <p className="text-xl md:text-2xl text-foreground/80 mb-8 leading-relaxed">
+          <p className="text-lg sm:text-xl md:text-2xl text-foreground/80 mb-6 sm:mb-8 leading-relaxed px-4 sm:px-0">
             {t('hero.subtitle')}
           </p>
           
-          <div className="bg-card/20 backdrop-blur-md border border-card-glow/20 rounded-2xl p-6 mb-10 inline-block">
-            <p className="text-lg font-medium text-accent-soft">
+          <div className="bg-card/20 backdrop-blur-md border border-card-glow/20 rounded-2xl p-4 sm:p-6 mb-8 sm:mb-10 mx-4 sm:mx-0 inline-block">
+            <p className="text-base sm:text-lg font-medium text-accent-soft">
               {t('hero.tagline')}
             </p>
           </div>
           
           <Button 
             variant="hero"
-            className="text-2xl py-6 px-12 shadow-glow hover:shadow-neural transform hover:scale-105 transition-all duration-300"
+            className="text-lg sm:text-xl md:text-2xl py-4 sm:py-6 px-8 sm:px-12 mx-4 sm:mx-0 shadow-glow hover:shadow-neural transform hover:scale-105 transition-all duration-300 w-full sm:w-auto"
             onClick={() => window.open(getAffiliateUrl('https://neuroquranic.app'), '_blank')}
           >
             📲 {t('hero.cta')}

@@ -30,11 +30,11 @@ export const Testimonials = () => {
           </h2>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 max-w-7xl mx-auto">
           {testimonials.map((testimonial, index) => (
             <div 
               key={index}
-              className="group bg-card/30 backdrop-blur-md border border-card-glow/20 rounded-2xl p-8 hover:bg-card/50 hover:border-card-glow/40 transition-all duration-500 hover:shadow-card hover:-translate-y-2"
+              className="group bg-card/30 backdrop-blur-md border border-card-glow/20 rounded-2xl p-6 sm:p-8 hover:bg-card/50 hover:border-card-glow/40 transition-all duration-500 hover:shadow-card hover:-translate-y-2"
             >
               {/* Glow effect */}
               <div className="absolute -inset-0.5 bg-gradient-neural rounded-2xl opacity-0 group-hover:opacity-10 transition-opacity duration-500 blur"></div>
@@ -44,7 +44,7 @@ export const Testimonials = () => {
                   {testimonial.emoji}
                 </div>
                 
-                <blockquote className="text-lg text-foreground/90 leading-relaxed mb-6 group-hover:text-foreground transition-colors">
+                <blockquote className="text-base sm:text-lg text-foreground/90 leading-relaxed mb-4 sm:mb-6 group-hover:text-foreground transition-colors">
                   "{t(testimonial.quoteKey)}"
                 </blockquote>
                 

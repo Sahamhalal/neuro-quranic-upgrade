@@ -43,25 +43,25 @@ export const NeuroTools = () => {
           </h2>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 max-w-7xl mx-auto">
           {tools.map((tool, index) => (
             <div 
               key={index}
-              className="group relative bg-card/30 backdrop-blur-md border border-card-glow/20 rounded-2xl p-8 hover:bg-card/50 hover:border-card-glow/40 transition-all duration-500 hover:shadow-card hover:-translate-y-2"
+              className="group relative bg-card/30 backdrop-blur-md border border-card-glow/20 rounded-2xl p-6 sm:p-8 hover:bg-card/50 hover:border-card-glow/40 transition-all duration-500 hover:shadow-card hover:-translate-y-2"
             >
               {/* Neural glow effect */}
               <div className="absolute -inset-0.5 bg-gradient-neural rounded-2xl opacity-0 group-hover:opacity-20 transition-opacity duration-500 blur"></div>
               
               <div className="relative z-10">
-                <div className="text-5xl mb-6 animate-float" style={{ animationDelay: `${index * 0.2}s` }}>
+                <div className="text-4xl sm:text-5xl mb-4 sm:mb-6 animate-float text-center" style={{ animationDelay: `${index * 0.2}s` }}>
                   {tool.icon}
                 </div>
                 
-                <h3 className="text-xl font-semibold mb-4 text-foreground group-hover:text-accent-soft transition-colors">
+                <h3 className="text-lg sm:text-xl font-semibold mb-3 sm:mb-4 text-foreground group-hover:text-accent-soft transition-colors text-center">
                   {t(tool.titleKey)}
                 </h3>
                 
-                <p className="text-muted-foreground leading-relaxed group-hover:text-foreground/80 transition-colors">
+                <p className="text-sm sm:text-base text-muted-foreground leading-relaxed group-hover:text-foreground/80 transition-colors text-center">
                   {t(tool.descKey)}
                 </p>
               </div>

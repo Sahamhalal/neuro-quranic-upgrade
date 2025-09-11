@@ -64,8 +64,8 @@
     --transition-smooth: all 0.3s ease-out;
     
     /* Typography scale */
-    --font-size-hero: clamp(2.5rem, 5vw, 4rem);
-    --font-size-heading: clamp(1.5rem, 3vw, 2.5rem);
+    --font-size-hero: clamp(2rem, 8vw, 4rem);
+    --font-size-heading: clamp(1.25rem, 4vw, 2.5rem);
     
     --radius: 1rem;
   }
@@ -109,5 +109,6 @@
 
   body {
     @apply bg-background text-foreground;
+    min-width: 320px; /* Prevent layout breaks on very small screens */
   }
 }
