@@ -1,8 +1,10 @@
 import { Button } from './ui/button';
 import { useLanguage } from '@/contexts/LanguageContext';
+import { useAffiliate } from '@/hooks/useAffiliate';
 
 export const Download = () => {
   const { t } = useLanguage();
+  const { getAffiliateUrl } = useAffiliate();
 
   return (
     <section className="py-20 bg-gradient-to-b from-transparent to-card/10 relative overflow-hidden">
@@ -23,7 +25,7 @@ export const Download = () => {
             <Button 
               variant="hero"
               className="text-2xl py-8 px-16 shadow-glow hover:shadow-neural transform hover:scale-105 transition-all duration-300 animate-neural-pulse"
-              onClick={() => window.open('https://neuroquranic.app', '_blank')}
+              onClick={() => window.open(getAffiliateUrl('https://neuroquranic.app'), '_blank')}
             >
               🧠 {t('download.cta')}
             </Button>

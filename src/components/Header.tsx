@@ -2,9 +2,11 @@ import { useState, useEffect } from 'react';
 import { Button } from './ui/button';
 import { LanguageSwitcher } from './ui/language-switcher';
 import { useLanguage } from '@/contexts/LanguageContext';
+import { useAffiliate } from '@/hooks/useAffiliate';
 
 export const Header = () => {
   const { currentLang, changeLanguage, t } = useLanguage();
+  const { getAffiliateUrl } = useAffiliate();
   const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
@@ -72,7 +74,7 @@ export const Header = () => {
             <Button 
               variant="neural" 
               size="sm"
-              onClick={() => window.open('https://neuroquranic.app', '_blank')}
+              onClick={() => window.open(getAffiliateUrl('https://neuroquranic.app'), '_blank')}
             >
               {t('nav.download')}
             </Button>
@@ -83,7 +85,7 @@ export const Header = () => {
             <Button 
               variant="glass" 
               size="sm"
-              onClick={() => window.open('https://neuroquranic.app', '_blank')}
+              onClick={() => window.open(getAffiliateUrl('https://neuroquranic.app'), '_blank')}
             >
               {t('nav.download')}
             </Button>

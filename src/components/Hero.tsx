@@ -1,9 +1,11 @@
 import { Button } from './ui/button';
 import { useLanguage } from '@/contexts/LanguageContext';
+import { useAffiliate } from '@/hooks/useAffiliate';
 import heroImage from '@/assets/hero-brain.jpg';
 
 export const Hero = () => {
   const { t } = useLanguage();
+  const { getAffiliateUrl } = useAffiliate();
 
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-hero">
@@ -54,7 +56,7 @@ export const Hero = () => {
           <Button 
             variant="hero"
             className="text-2xl py-6 px-12 shadow-glow hover:shadow-neural transform hover:scale-105 transition-all duration-300"
-            onClick={() => window.open('https://neuroquranic.app', '_blank')}
+            onClick={() => window.open(getAffiliateUrl('https://neuroquranic.app'), '_blank')}
           >
             📲 {t('hero.cta')}
           </Button>
