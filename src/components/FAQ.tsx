@@ -8,20 +8,20 @@ export const FAQ = () => {
 
   const faqs = [
     {
-      q: "Q: Saya bukan Muslim — boleh guna?",
-      a: "A: Ya. Frekuensi Quran terbukti secara saintifik menenangkan sistem saraf & meningkatkan fokus — sesuai untuk semua."
+      q: t('faq.q1'),
+      a: t('faq.a1')
     },
     {
-      q: "Q: Saya tak faham Arab — sesuai ke?", 
-      a: "A: Sangat sesuai. Otak anda merespon frekuensi & irama, bukan makna — makna akan datang kemudian, secara fitrah."
+      q: t('faq.q2'), 
+      a: t('faq.a2')
     },
     {
-      q: "Q: Ada unsur agama yang mengikat?",
-      a: "A: Tiada. Kami fokus pada sains & transformasi otak. Anda bebas guna mengikut keselesaan."
+      q: t('faq.q3'),
+      a: t('faq.a3')
     },
     {
-      q: "Q: Boleh guna untuk terapi?",
-      a: "A: Ramai pengguna gunakan untuk ADHD, anxiety, dementia, rukyah — sebagai terapi sokongan. (Bukan pengganti rawatan perubatan)."
+      q: t('faq.q4'),
+      a: t('faq.a4')
     }
   ];
 
