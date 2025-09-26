@@ -14,7 +14,7 @@ const App = () => (
     <TooltipProvider>
       <Toaster />
       <Sonner />
-      <BrowserRouter>
+      <BrowserRouter basename="/neuro-quranic-upgrade">
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/affiliate/:affiliateId" element={<Affiliate />} />
