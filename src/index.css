@@ -1,0 +1,114 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* NeuroQuranic Design System - Neuroscience meets Islamic aesthetics */
+
+@layer base {
+  :root {
+    /* Core Background & Text */
+    --background: 218 50% 4%;
+    --foreground: 210 40% 98%;
+    
+    /* Brand Colors - Neural purple/blue theme */
+    --primary: 264 83% 58%;
+    --primary-foreground: 210 40% 98%;
+    --primary-glow: 280 100% 70%;
+    
+    /* Secondary - Calm blues */
+    --secondary: 213 27% 84%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+    
+    /* Neural accent colors */
+    --accent: 258 90% 66%;
+    --accent-foreground: 210 40% 98%;
+    --accent-soft: 258 90% 66%;
+    
+    /* Surface colors */
+    --card: 218 50% 6%;
+    --card-foreground: 210 40% 98%;
+    --card-glow: 264 83% 58%;
+    
+    --popover: 218 50% 6%;
+    --popover-foreground: 210 40% 98%;
+    
+    /* Feedback colors */
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+    
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+    
+    /* Interactive elements */
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 264 83% 58%;
+    
+    /* Neural-inspired gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(264, 83%, 58%), hsl(280, 100%, 70%));
+    --gradient-secondary: linear-gradient(135deg, hsl(213, 27%, 84%), hsl(258, 90%, 66%));
+    --gradient-neural: linear-gradient(45deg, hsl(264, 83%, 58%) 0%, hsl(280, 100%, 70%) 25%, hsl(258, 90%, 66%) 50%, hsl(213, 27%, 84%) 75%);
+    --gradient-hero: linear-gradient(135deg, hsl(218, 50%, 4%) 0%, hsl(264, 83%, 20%) 100%);
+    
+    /* Glass effect */
+    --glass-bg: hsla(218, 50%, 6%, 0.8);
+    --glass-border: hsla(264, 83%, 58%, 0.2);
+    
+    /* Shadows with neural glow */
+    --shadow-neural: 0 10px 40px -10px hsl(264 83% 58% / 0.4);
+    --shadow-glow: 0 0 40px hsl(280 100% 70% / 0.3);
+    --shadow-card: 0 8px 32px -8px hsl(264 83% 58% / 0.2);
+    
+    /* Animation properties */
+    --transition-neural: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-smooth: all 0.3s ease-out;
+    
+    /* Typography scale */
+    --font-size-hero: clamp(2rem, 8vw, 4rem);
+    --font-size-heading: clamp(1.25rem, 4vw, 2.5rem);
+    
+    --radius: 1rem;
+  }
+}
+
+/* Neural pulse animation */
+@keyframes neural-pulse {
+  0%, 100% { 
+    box-shadow: 0 0 20px hsl(264 83% 58% / 0.4);
+    transform: scale(1);
+  }
+  50% { 
+    box-shadow: 0 0 40px hsl(280 100% 70% / 0.6);
+    transform: scale(1.02);
+  }
+}
+
+/* Floating animation */
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+/* Gradient shift animation */
+@keyframes gradient-shift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Glow pulse */
+@keyframes glow-pulse {
+  0%, 100% { opacity: 0.5; }
+  50% { opacity: 1; }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    min-width: 320px; /* Prevent layout breaks on very small screens */
+  }
+}
