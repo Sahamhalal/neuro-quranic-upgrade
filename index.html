@@ -1,39 +1,127 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
+    <script type="module" crossorigin src="/assets/index-B4s7v7FU.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-B27f0W1K.css">
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.ico" />
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>NeuroQuranic - Neuroplasticity Training with Quranic Verses</title>
-    <meta name="description" content="Revolutionary neuroplasticity training combining Quranic verses with neuroscience to enhance brain function, memory, and cognitive abilities." />
-    <meta name="keywords" content="neuroplasticity, Quran, brain training, cognitive enhancement, Islamic neuroscience, memory improvement" />
-    
-    <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://neuroquranic.com/" />
-    <meta property="og:title" content="NeuroQuranic - Neuroplasticity Training with Quranic Verses" />
-    <meta property="og:description" content="Revolutionary neuroplasticity training combining Quranic verses with neuroscience to enhance brain function, memory, and cognitive abilities." />
-    <meta property="og:image" content="https://neuroquranic.com/hero-brain.jpg" />
+    <title>NeuroQuranic — Upgrade Otak Anda Dari "DOS" ke "Quantum Computer"</title>
 
-    <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image" />
-    <meta property="twitter:url" content="https://neuroquranic.com/" />
-    <meta property="twitter:title" content="NeuroQuranic - Neuroplasticity Training with Quranic Verses" />
-    <meta property="twitter:description" content="Revolutionary neuroplasticity training combining Quranic verses with neuroscience to enhance brain function, memory, and cognitive abilities." />
-    <meta property="twitter:image" content="https://neuroquranic.com/hero-brain.jpg" />
+    <!-- SPA Routing Fix for GitHub Pages -->
+    <script>
+      // Check if this is an affiliate link before page loads
+      (function() {
+        const path = window.location.pathname;
+        const search = window.location.search;
 
-    <!-- Canonical URL -->
-    <link rel="canonical" href="https://neuroquranic.com/" />
-    
-    <!-- Manifest -->
-    <link rel="manifest" href="/manifest.webmanifest" />
-    
-    <!-- Theme Color -->
-    <meta name="theme-color" content="#1a1a2e" />
+        // If this is an affiliate route, store it and redirect to home with hash
+        if (path.startsWith('/affiliate/')) {
+          const affiliateId = path.split('/affiliate/')[1];
+          if (affiliateId) {
+            // Store affiliate data
+            try {
+              const referralData = {
+                partnerId: affiliateId,
+                timestamp: Date.now(),
+                source: 'direct_link',
+                originalPath: path
+              };
+              localStorage.setItem('neuroquranic_referral', JSON.stringify(referralData));
+              console.log('Affiliate referral stored:', affiliateId);
+            } catch (error) {
+              console.error('Failed to store referral:', error);
+            }
+
+            // Redirect to home with hash routing for SPA
+            window.location.href = '/#/affiliate/' + affiliateId;
+          }
+        }
+
+        // Handle hash-based routing for SPA
+        if (window.location.hash.startsWith('#/affiliate/')) {
+          // Let React Router handle this
+          console.log('Hash-based affiliate route detected');
+        }
+      })();
+    </script>
   </head>
-    <script src="affiliate-tracker-addon.js"></script>
+
   <body>
     <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
+
+    <!-- Affiliate Tracking Enhancement -->
+    <script>
+      // Enhanced affiliate tracking for GitHub Pages
+      window.addEventListener('load', function() {
+        // Check for stored referral
+        try {
+          const stored = localStorage.getItem('neuroquranic_referral');
+          if (stored) {
+            const referralData = JSON.parse(stored);
+            const daysSinceReferral = (Date.now() - referralData.timestamp) / (1000 * 60 * 60 * 24);
+
+            if (daysSinceReferral <= 30) {
+              console.log('Active affiliate referral:', referralData.partnerId);
+
+              // Show subtle indicator
+              const indicator = document.createElement('div');
+              indicator.style.cssText = `
+                position: fixed;
+                top: 10px;
+                right: 10px;
+                background: #22c55e;
+                color: white;
+                padding: 6px 12px;
+                border-radius: 4px;
+                font-size: 11px;
+                font-family: Arial, sans-serif;
+                z-index: 10000;
+                opacity: 0.8;
+              `;
+              indicator.textContent = '✓ Referred';
+              document.body.appendChild(indicator);
+
+              setTimeout(() => {
+                if (indicator.parentNode) {
+                  indicator.parentNode.removeChild(indicator);
+                }
+              }, 3000);
+            } else {
+              // Expired
+              localStorage.removeItem('neuroquranic_referral');
+            }
+          }
+        } catch (error) {
+          console.error('Error checking referral:', error);
+        }
+
+        // Global conversion tracking function
+        window.trackConversion = function(type = 'signup', value = 0) {
+          try {
+            const stored = localStorage.getItem('neuroquranic_referral');
+            if (stored) {
+              const referralData = JSON.parse(stored);
+              console.log('Conversion tracked:', {
+                partnerId: referralData.partnerId,
+                type: type,
+                value: value,
+                timestamp: Date.now()
+              });
+
+              // Here you would send to your backend
+              // fetch('/api/track-conversion', { ... })
+
+              // Clear after conversion
+              localStorage.removeItem('neuroquranic_referral');
+              return true;
+            }
+          } catch (error) {
+            console.error('Conversion tracking error:', error);
+          }
+          return false;
+        };
+      });
+    </script>
   </body>
 </html>
