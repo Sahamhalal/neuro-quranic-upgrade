@@ -5,57 +5,63 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Redirecting...</title>
     <script>
-        // GitHub Pages SPA routing fix
-        // This handles /affiliate/* routes and redirects properly
-
+        // GitHub Pages direct redirect solution
         (function() {
+            console.log('404.html loaded for path:', window.location.pathname);
+
             const path = window.location.pathname;
             const search = window.location.search;
+            const hash = window.location.hash;
 
             // Check if this is an affiliate link
-            if (path.startsWith('/affiliate/')) {
-                // Extract affiliate ID
+            if (path.includes('/affiliate/')) {
                 const affiliateId = path.split('/affiliate/')[1];
 
                 if (affiliateId) {
-                    // Store affiliate data for 30 days
+                    console.log('Processing affiliate ID:', affiliateId);
+
+                    // Store affiliate data immediately
                     const referralData = {
                         partnerId: affiliateId,
                         timestamp: Date.now(),
-                        source: 'direct_link'
+                        source: 'direct_link',
+                        originalUrl: window.location.href
                     };
 
                     try {
                         localStorage.setItem('neuroquranic_referral', JSON.stringify(referralData));
-                        console.log('Affiliate referral stored:', affiliateId);
+                        console.log('✅ Affiliate referral stored successfully');
                     } catch (error) {
-                        console.error('Failed to store referral:', error);
+                        console.error('❌ Failed to store referral:', error);
                     }
 
-                    // Show success message briefly
+                    // Show loading message
                     document.body.innerHTML = `
                         <div style="
+                            min-height: 100vh;
                             display: flex;
                             justify-content: center;
                             align-items: center;
-                            height: 100vh;
-                            font-family: Arial, sans-serif;
+                            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
                             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
                             color: white;
                             text-align: center;
+                            margin: 0;
+                            padding: 20px;
                         ">
                             <div>
-                                <h1>Welcome!</h1>
-                                <p>You've been referred by one of our affiliates.</p>
-                                <p>Redirecting to main page...</p>
+                                <div style="font-size: 48px; margin-bottom: 20px;">🧠</div>
+                                <h1 style="margin: 0 0 10px 0; font-size: 28px; font-weight: 300;">Selamat Datang!</h1>
+                                <p style="margin: 0 0 20px 0; opacity: 0.9; font-size: 16px;">Anda telah dirujuk oleh salah seorang affiliate kami.</p>
+                                <p style="margin: 0 0 30px 0; opacity: 0.7; font-size: 14px;">Mengalihkan ke halaman utama...</p>
                                 <div style="
-                                    margin: 20px auto;
                                     width: 40px;
                                     height: 40px;
-                                    border: 4px solid #ffffff40;
-                                    border-top: 4px solid #ffffff;
+                                    border: 3px solid rgba(255,255,255,0.3);
+                                    border-top: 3px solid white;
                                     border-radius: 50%;
                                     animation: spin 1s linear infinite;
+                                    margin: 0 auto;
                                 "></div>
                             </div>
                         </div>
@@ -64,38 +70,57 @@
                                 0% { transform: rotate(0deg); }
                                 100% { transform: rotate(360deg); }
                             }
+                            body { margin: 0; padding: 0; }
                         </style>
                     `;
 
-                    // Redirect to home page after 2 seconds
+                    // Redirect after showing message
                     setTimeout(() => {
-                        window.location.href = '/';
-                    }, 2000);
+                        // Try different redirect methods
+                        const homeUrl = window.location.origin + '/';
 
-                    return;
+                        try {
+                            // Method 1: Direct replacement
+                            window.location.replace(homeUrl);
+                        } catch (e) {
+                            try {
+                                // Method 2: Assignment
+                                window.location.href = homeUrl;
+                            } catch (e2) {
+                                // Method 3: Top-level redirect
+                                window.top.location.href = homeUrl;
+                            }
+                        }
+                    }, 2500);
+
+                    return; // Stop execution
                 }
             }
 
-            // For any other 404, redirect to home
+            // For any other 404 (not affiliate), redirect to home
+            console.log('Non-affiliate 404, redirecting to home');
             setTimeout(() => {
-                window.location.href = '/';
+                window.location.replace(window.location.origin + '/');
             }, 1000);
 
         })();
     </script>
 </head>
 <body>
+    <!-- Fallback content if JavaScript is disabled -->
     <div style="
+        min-height: 100vh;
         display: flex;
         justify-content: center;
         align-items: center;
-        height: 100vh;
         font-family: Arial, sans-serif;
         text-align: center;
+        background: #f5f5f5;
+        padding: 20px;
     ">
         <div>
-            <h1>Redirecting...</h1>
-            <p>Taking you to the main page.</p>
+            <h1>Mengalihkan...</h1>
+            <p>Jika anda tidak dialihkan secara automatik, <a href="/">klik di sini</a>.</p>
         </div>
     </div>
 </body>

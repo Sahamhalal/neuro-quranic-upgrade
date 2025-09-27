@@ -1,8 +1,5 @@
-# Netlify redirects file
-# This ensures that all routes are handled by the React app
+# Netlify-style redirects for GitHub Pages
+# GitHub Pages doesn't fully support this, but it's worth trying
 
-# Handle affiliate links specifically
-/affiliate/* /index.html 200
-
-# Handle all other SPA routes
+/affiliate/* /404.html 200
 /* /index.html 200
