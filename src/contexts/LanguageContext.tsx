@@ -213,38 +213,34 @@ export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children }) 
   const [currentLang, setCurrentLang] = useState<Language>('en'); // Default to English
 
   useEffect(() => {
-    const detectLanguageByLocation = async () => {
-      const savedLang = localStorage.getItem('preferredLang') as Language;
-      if (savedLang && translations[savedLang]) {
-        setCurrentLang(savedLang);
-        return;
-      }
-
+    const initializeLanguage = () => {
       try {
-        // Try to get country from IP geolocation
-        const response = await fetch('https://ipapi.co/json/');
-        const data = await response.json();
-        const country = data.country_code;
-
-        let detectedLang: Language = 'en'; // Default to English
-        
-        if (country === 'MY') {
-          detectedLang = 'bm'; // Malaysia -> Malay
-        } else if (country === 'ID') {
-          detectedLang = 'bi'; // Indonesia -> Bahasa Indonesia
+        const savedLang = localStorage.getItem('preferredLang') as Language;
+        if (savedLang && translations[savedLang]) {
+          setCurrentLang(savedLang);
         } else {
-          detectedLang = 'en'; // Singapore and other countries -> English
-        }
+          // Use browser language as fallback instead of API call
+          const browserLang = navigator.language.toLowerCase();
+          let detectedLang: Language = 'en'; // Default to English
 
-        setCurrentLang(detectedLang);
-        localStorage.setItem('preferredLang', detectedLang);
+          if (browserLang.includes('ms') || browserLang.includes('my')) {
+            detectedLang = 'bm'; // Malay
+          } else if (browserLang.includes('id')) {
+            detectedLang = 'bi'; // Indonesian
+          } else {
+            detectedLang = 'en'; // English
+          }
+
+          setCurrentLang(detectedLang);
+          localStorage.setItem('preferredLang', detectedLang);
+        }
       } catch (error) {
-        console.log('Geolocation detection failed, using English default');
+        console.log('Language detection failed, using English default');
         setCurrentLang('en');
       }
     };
 
-    detectLanguageByLocation();
+    initializeLanguage();
   }, []);
 
   const changeLanguage = (lang: Language) => {
